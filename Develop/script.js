@@ -14,20 +14,14 @@ function writePassword() {
   var correctPrompts = getPrompts();
   var passwordText = document.querySelector("#password");
 
-  if (correctPrompts) {
+  if (correctPrompts && choiceArray.length>0) {
     var newPassword = generatePassword();
     passwordText.value = newPassword;
   } else {
     passwordText.value = "";
-  // } else if{
-  //   (lowerCaseArray=0, upperCaseArray=0, numberArray=0, specialCharacterArray=0){
-  //     alert("You must select at least one option");
-  //   }
-  //   return 'false';
-  }
-  
-}
-
+    alert("You have to choose at least one");
+  }}
+ 
 function generatePassword() {
   var password = "";
   for(var i = 0; i < characterLength; i++) {
@@ -59,7 +53,6 @@ function getPrompts() {
   if (confirm("Should your password contain a special character?")) {
     choiceArray = choiceArray.concat(specialCharacterArray);
   }
-
   return 'true';
 
 }
